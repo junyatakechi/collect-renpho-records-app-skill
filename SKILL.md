@@ -76,10 +76,10 @@ uv run scripts/sync_renpho_to_notion.py --dry-run          # 書き込まず件�
 uv run scripts/sync_renpho_to_notion.py                    # 未取り込み分を全て同期
 uv run scripts/sync_renpho_to_notion.py --start-date 2026-07-30
 uv run scripts/sync_renpho_to_notion.py --limit 3          # 先頭N件だけ（少数テスト用）
-uv run scripts/sync_renpho_to_notion.py --max-age-hours 6  # 他のスキルから呼ぶときはこれ
+uv run scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 他のスキルから頼まれたときはこれ
 ```
 
-- **他のスキルから評価の前に呼ばれるときは、`--max-age-hours` を必ず付ける。** 記録先の最新の測定がその時間以内なら、RENPHOに接続しない。何時間にするかは呼び出し側が決める。根拠は renpho-api-generic-logic のセッションとトークンの判断。
+- **他のスキルから評価の前に頼まれたときは、頼みたい事に含まれた時間を `--max-age-hours` に渡す。** 記録先の最新の測定がその時間以内なら、RENPHOに接続しない。何時間にするかは依頼元が決める。時間が含まれていなければ、依頼元に聞く。根拠は renpho-api-generic-logic のセッションとトークンの判断。
 - **ユーザーから直接頼まれたときは付けない。** 頼まれたのは「最新にすること」なので、取りに行く。
 - 初めての同期・列を変えた直後は、先に `--dry-run` と `--limit 3` で確かめる。
 - **冪等性は `RENPHO ID` 列で担保している。** 何度実行しても重複しない。期間の指定は要らず、常に全件を取って差分だけを入れる。
@@ -93,12 +93,6 @@ uv run scripts/sync_renpho_to_notion.py --max-age-hours 6  # 他のスキルか�
 - **RENPHOにログインしたときは、必ず伝える。** 出力に `※ RENPHOにログインしました` があれば、スマホアプリがログアウトされたので、アプリで再ログインしてもらう。
 - `--max-age-hours` で接続しなかったときは、その旨と記録先の最新の測定が何時間前かを伝える。
 - 実行結果には、聞いたロジックスキルの名前と版（判断の委任表の版）を添えられるようにしておく。どの判断で記録したかを後から辿るため。
-
-## 実行環境の癖（Windows / Git Bash）
-
-- `python` で直接叩かず、`uv run` で起動する。スクリプト先頭のインラインメタデータで `pycryptodome` が入る。
-- `TZ=Asia/Tokyo` は使わない（ゾーン名の解決に失敗し、黙ってUTCになる）。スクリプトはJSTを `+09:00` の固定オフセットで持っている。
-- 一時ファイルは `/tmp` ではなくスクラッチパッドの絶対パスを使う（Windows版の `python` は `/tmp/foo` を `C:\tmp\foo` と解釈する）。
 
 ## 他のスキルとの分担
 
