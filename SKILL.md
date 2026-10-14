@@ -75,10 +75,10 @@ RENPHOの癖（ログインでアプリが落ちる・単位が返らない・�
 
 | スキル名 | リポジトリのURL | 版 |
 |---|---|---|
-| `renpho-api-generic-logic` | https://github.com/junyatakechi/renpho-api-generic-logic | 0.1 |
-| `notion-cli-generic-logic` | https://github.com/junyatakechi/notion-cli-generic-logic | 0.2 |
+| `renpho-api-generic-logic` | https://github.com/junyatakechi/renpho-api-generic-logic | 0.1.x |
+| `notion-cli-generic-logic` | https://github.com/junyatakechi/notion-cli-generic-logic | 0.2.x |
 
-- 版は、そのスキルの `metadata.version` の先頭2桁（例：`0.2`）。3桁目だけが上がった版は、この表を直さずにそのまま使う。3桁目は、呼び出し側が何も合わせなくてよい変更だけで上がるため。
+- 版は、そのスキルの版（`metadata.version`）の先頭2桁に、`.x` を付けた形（例：`0.2.x`）。3桁目はどの版でもよいことを表す。3桁目だけが上がった版は、この表を直さずにそのまま使う。3桁目は、呼び出し側が何も合わせなくてよい変更だけで上がるため。
 - 判断先を別の人のスキルに差し替えるときは、この表の行も差し替える。
 
 ## 手順
