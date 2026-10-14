@@ -3,12 +3,13 @@
 RENPHO（体組成計）の測定を取得し、Notionの「体重記録」DBへ記録する、アプリケーションスキル。
 体重・体脂肪率・骨格筋量・基礎代謝など17項目を、まだ入っていない分だけ記録する。
 
-RENPHO側の判断（スマホアプリを落とさないセッションの扱い・単位・同じ測定の重複など）は [renpho-api-generic-logic](https://github.com/junyatakechi/renpho-api-generic-logic) に、Notionの呼び方は [notion-cli-generic-logic](https://github.com/junyatakechi/notion-cli-generic-logic) に委ね、どちらの道具も部品として呼ぶ。このスキルが持つのは、記録先のDB・列名と手順だけ。
+RENPHO側の判断（スマホアプリを落とさないセッションの扱い・単位・同じ測定の重複など）は [renpho-api-generic-logic](https://github.com/junyatakechi/renpho-api-generic-logic) に、Notionの呼び方は [notion-cli-generic-logic](https://github.com/junyatakechi/notion-cli-generic-logic) に委ね、どちらの道具も部品として呼ぶ。このスキルが持つのは、記録先のDB・列名と手順。まだ切り出していない判断は `references/` に置く。
 
 ## 中身
 
-- [SKILL.md](SKILL.md): 判断の委任表と、設定の確認・同期・報告の手順
-- [references/notion-db.md](references/notion-db.md): 記録先のDBと列
+- [SKILL.md](SKILL.md): 判断の委任表・使用するリポジトリ表と、設定の確認・同期・報告の手順
+- [conventions/notion-db.md](conventions/notion-db.md): 記録先のDBと列（この環境での記録の取り決め）
+- [references/](references/): まだ切り出していない判断。1判断1ファイル
 - [scripts/sync_renpho_to_notion.py](scripts/sync_renpho_to_notion.py): RENPHOから取り、Notionへ記録する
 
 ## 必要なもの
@@ -17,7 +18,7 @@ RENPHO側の判断（スマホアプリを落とさないセッションの扱�
 - [renpho-api-generic-logic](https://github.com/junyatakechi/renpho-api-generic-logic)（RENPHOの判断と道具）
 - [notion-cli-generic-logic](https://github.com/junyatakechi/notion-cli-generic-logic)（Notionの判断と道具）
 - 3つのスキルは、同じ `skills/` フォルダに並べて置く（スクリプトが隣のフォルダから道具を読む）
-- 測定を記録するNotionのDB（列は [references/notion-db.md](references/notion-db.md)）
+- 測定を記録するNotionのDB（列は [conventions/notion-db.md](conventions/notion-db.md)）
 
 ## インストール
 

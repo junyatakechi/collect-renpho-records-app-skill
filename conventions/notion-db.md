@@ -6,7 +6,7 @@
 ## DB
 
 - Notionの「体重記録」DB。URLは環境ファイルの `RENPHO_COLLECTION_DB_URL` にある。
-- 体組成計の自動記録より前の、手入力の体重の履歴が続いている。**新しいDBを作らない。** 体重の時系列が分割され、このDBを読んでいる評価のスキルの参照先も直すことになるため。
+- 体組成計の自動記録より前の、手入力の体重の履歴が続いている。新しいDBを作らない理由は、まだ切り出していない判断（[references/keep-existing-db.md](../references/keep-existing-db.md)）にある。
 - このスキルが書くのはこのDBだけ。評価やLogへの記録はしない。
 
 ## 列
@@ -36,7 +36,7 @@
 
 - どのキーが何で、単位は何か、どの値を空にするかは renpho-api-generic-logic の判断（項目の意味と単位・体組成が空のレコード）に従う。ここでは対応だけを持つ。
 - `RENPHO ID` がテキストなのは、renpho-api-generic-logic のレコードIDの持ち方の判断による。
-- Elis Aspire で常に空の項目（`heartRate`・`cardiacIndex`・`bodyShape`）と、重複の `FC` には列を作っていない。
+- Elis Aspire で常に空の項目（`heartRate`・`cardiacIndex`・`bodyShape`）と、重複の `FC` には列を作っていない。理由は、まだ切り出していない判断（[references/unused-fields.md](../references/unused-fields.md)）にある。
 
 ## 記録の限界
 

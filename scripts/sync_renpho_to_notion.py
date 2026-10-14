@@ -10,7 +10,7 @@
   uv run scripts/sync_renpho_to_notion.py                    # 未取り込み分を全て同期
   uv run scripts/sync_renpho_to_notion.py --start-date 2026-07-30
   uv run scripts/sync_renpho_to_notion.py --limit 3          # 先頭N件だけ(初回の少数テスト用)
-  uv run scripts/sync_renpho_to_notion.py --max-age-hours 6  # 他のスキルから毎回呼ぶときはこれ
+  uv run scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 他のスキルから頼まれたとき
 
 **判断はこのスキルに持たない。** RENPHO側の事情(セッション・測定時刻・単位・同一測定の集約・
 欠測・IDの型)は renpho-api-generic-logic の判断と道具に、Notionの呼び方は
@@ -44,7 +44,7 @@ ENV_NAME = "renpho-collection-app"
 ENV_DB_KEY = "RENPHO_COLLECTION_DB_URL"
 
 # ---------------------------------------------------------------- 記録先の列(導入先の環境)
-# 記録先の「体重記録」DBの列名。references/notion-db.md が説明で、ここが正。
+# 記録先の「体重記録」DBの列名。conventions/notion-db.md が説明で、ここが正。
 # 列を足す前に renpho-api-generic-logic の項目の意味と単位の判断に聞き、
 # 列名を変えたらNotion側と同時にここを直す(notion-cli-generic-logic のスキーマの変更の判断)。
 TITLE_COLUMN = "Name"          # 測定日の YYYY-MM-DD
