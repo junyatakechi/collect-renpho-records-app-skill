@@ -1,8 +1,8 @@
 ---
 name: renpho-collection-app
-description: RENPHO（体組成計）の測定を取得し、Notionの「体重記録」DBへ記録するアプリケーションスキル。体重・BMI・体脂肪率・体水分率・骨格筋量・筋肉量・骨量・基礎代謝・内臓脂肪・皮下脂肪・タンパク質・体年齢・除脂肪体重など17項目を同期する。「体重計のデータを取り込んで」「RENPHOを同期して」「体組成を記録して」「体重記録を最新にして」のように言われたときや、評価のスキル（diet-process-evaluation-app など）から評価の前の最新化として頼まれたときに使う。RENPHO側の判断（セッション・測定時刻・単位・同一測定の集約・欠測・IDの型）は外部の generic-logic（renpho-api-generic-logic）に、Notionの呼び方は notion-cli-generic-logic に委ね、どちらの道具も写さず自分で呼ぶ。切り出した判断はこのスキルに持たず、判断の委任表の判断先の判断ファイルに聞く。記録先のDB・列名と手順を持ち、まだ切り出していない判断は references に置く。取得した測定の解釈・評価はしない。
+description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
   repository: "https://github.com/junyatakechi/renpho-collection-app"
 ---
 
