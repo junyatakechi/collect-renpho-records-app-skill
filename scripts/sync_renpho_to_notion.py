@@ -32,7 +32,7 @@ import renpho_records  # noqa: E402
 from renpho_api import RenphoError  # noqa: E402
 from renpho_env import open_client  # noqa: E402
 from notion_client import (  # noqa: E402
-    NotionError, create_page, data_source_id_from_url, load_env_file, query_data_source,
+    NotionError, create_page, data_source_id_from_url, env_file_path, load_env, query_data_source,
 )
 from notion_props import date_prop, number_prop, rich_text_prop, title_prop  # noqa: E402
 
@@ -40,7 +40,6 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 JST = renpho_records.JST
-ENV_NAME = "renpho-collection-app"
 ENV_DB_KEY = "RENPHO_COLLECTION_DB_URL"
 
 # ---------------------------------------------------------------- 記録先の列(導入先の環境)
@@ -76,9 +75,9 @@ def log(msg):
 
 
 def data_source_id():
-    url = load_env_file(ENV_NAME).get(ENV_DB_KEY)
+    url = load_env().get(ENV_DB_KEY)
     if not url:
-        raise NotionError(f"~/.claude-skills-env/{ENV_NAME}.env に {ENV_DB_KEY} が無い。"
+        raise NotionError(f"環境変数にも {env_file_path()} にも {ENV_DB_KEY} が無い。"
                           "README の「セットアップ」を参照")
     return data_source_id_from_url(url)
 

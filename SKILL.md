@@ -93,19 +93,19 @@ RENPHOの癖（ログインでアプリが落ちる・単位が返らない・�
 
 | 合図 | 足りないもの |
 |---|---|
-| `~/.claude-skills-env/renpho-collection-app.env に RENPHO_COLLECTION_DB_URL が無い` | 記録先のDBのURL |
+| `環境変数にも <起動フォルダ>/.env にも RENPHO_COLLECTION_DB_URL が無い` | 記録先のDBのURL |
 | `RENPHO_EMAIL / RENPHO_PASSWORD が設定されていません。`・`RENPHOへのログインに失敗しました` | RENPHOの認証情報（renpho-api-generic-logic の認証情報の扱いの判断に聞く） |
-| `Notion token file not found`・`NOTION_TOKEN is not set`・記録先のDBで404 | Notionのトークン、または記録先のDBへのIntegrationの接続 |
+| `NOTION_TOKEN is not set`・記録先のDBで404 | Notionのトークン、または記録先のDBへのIntegrationの接続 |
 
 ### 2. 同期する
 
 ```bash
-cd <skill-dir>
-uv run scripts/sync_renpho_to_notion.py --dry-run          # 書き込まず件数と内訳だけ
-uv run scripts/sync_renpho_to_notion.py                    # 未取り込み分を全て同期
-uv run scripts/sync_renpho_to_notion.py --start-date 2026-07-30
-uv run scripts/sync_renpho_to_notion.py --limit 3          # 先頭N件だけ（少数テスト用）
-uv run scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 接続を省くとき
+# プロジェクトのフォルダ（.env のある起動フォルダ）から起動する。スキルのフォルダへ cd しない
+uv run <skill-dir>/scripts/sync_renpho_to_notion.py --dry-run          # 書き込まず件数と内訳だけ
+uv run <skill-dir>/scripts/sync_renpho_to_notion.py                    # 未取り込み分を全て同期
+uv run <skill-dir>/scripts/sync_renpho_to_notion.py --start-date 2026-07-30
+uv run <skill-dir>/scripts/sync_renpho_to_notion.py --limit 3          # 先頭N件だけ（少数テスト用）
+uv run <skill-dir>/scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 接続を省くとき
 ```
 
 - `--max-age-hours` を付けるか・何時間にするかは、まだ切り出していない判断（`references/request-source.md`）に聞く。記録先の最新の測定がその時間以内なら、RENPHOに接続しない。

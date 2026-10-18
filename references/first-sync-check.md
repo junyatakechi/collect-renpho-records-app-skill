@@ -11,9 +11,9 @@
 ## 道具
 
 ```bash
-cd <skill-dir>
-uv run scripts/sync_renpho_to_notion.py --dry-run
-uv run scripts/sync_renpho_to_notion.py --limit 3
+# プロジェクトのフォルダ（.env のある起動フォルダ）から起動する。スキルのフォルダへ cd しない
+uv run <skill-dir>/scripts/sync_renpho_to_notion.py --dry-run
+uv run <skill-dir>/scripts/sync_renpho_to_notion.py --limit 3
 ```
 
 ## 理由

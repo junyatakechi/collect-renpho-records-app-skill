@@ -38,7 +38,7 @@ git clone https://github.com/junyatakechi/renpho-collection-app.git ~/.claude/sk
 
 1. renpho-api-generic-logic の README の「セットアップ」で、RENPHOの認証情報を用意する。**パスワードは自分でファイルに書き込み、Claudeに渡さない。**
 2. notion-cli-generic-logic の README の「セットアップ」で、Notionのトークンを用意し、記録先のDBにIntegrationを接続する。
-3. `.env.example` を `~/.claude-skills-env/renpho-collection-app.env` にコピーし、値を埋める。
+3. `.env.example` のキーを、プロジェクトのフォルダ直下（Claude Code を起動するフォルダ）の `.env` に足し、値を埋める。`.env` はプロジェクトのスキルで共有する。
 
 | キー | 中身 |
 |---|---|
@@ -47,8 +47,8 @@ git clone https://github.com/junyatakechi/renpho-collection-app.git ~/.claude/sk
 4. 書き込まずに確かめる。
 
    ```bash
-   cd ~/.claude/skills/renpho-collection-app
-   uv run scripts/sync_renpho_to_notion.py --dry-run
+   cd <プロジェクトのフォルダ>   # .env のあるフォルダ
+   uv run ~/.claude/skills/renpho-collection-app/scripts/sync_renpho_to_notion.py --dry-run
    ```
 
 RENPHOは1つのアカウントに1つのセッションしか持てないため、初めてログインしたときにスマホアプリがログアウトされる。以降は保存したtokenを使い回すので、ログアウトは起きない。

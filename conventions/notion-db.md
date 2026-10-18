@@ -5,7 +5,7 @@
 
 ## DB
 
-- Notionの「体重記録」DB。URLは環境ファイルの `RENPHO_COLLECTION_DB_URL` にある。
+- Notionの「体重記録」DB。URLは起動フォルダの `.env` の `RENPHO_COLLECTION_DB_URL` にある。
 - 体組成計の自動記録より前の、手入力の体重の履歴が続いている。新しいDBを作らない理由は、まだ切り出していない判断（[references/keep-existing-db.md](../references/keep-existing-db.md)）にある。
 - このスキルが書くのはこのDBだけ。評価やLogへの記録はしない。
 
