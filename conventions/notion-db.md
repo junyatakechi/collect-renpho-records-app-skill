@@ -34,8 +34,8 @@
 | `生体インピーダンス(Ω)` | number | | `resistance` |
 | `体型分類` | number | | `bodytype` |
 
-- どのキーが何で、単位は何か、どの値を空にするかは renpho-api-generic-logic の判断（項目の意味と単位・体組成が空のレコード）に従う。ここでは対応だけを持つ。
-- `RENPHO ID` がテキストなのは、renpho-api-generic-logic のレコードIDの持ち方の判断による。
+- どのキーが何で、単位は何か、どの値を空にするかは renpho-api-generic-logic-skill の判断（項目の意味と単位・体組成が空のレコード）に従う。ここでは対応だけを持つ。
+- `RENPHO ID` がテキストなのは、renpho-api-generic-logic-skill のレコードIDの持ち方の判断による。
 - Elis Aspire で常に空の項目（`heartRate`・`cardiacIndex`・`bodyShape`）と、重複の `FC` には列を作っていない。理由は、まだ切り出していない判断（[references/unused-fields.md](../references/unused-fields.md)）にある。
 
 ## 記録の限界

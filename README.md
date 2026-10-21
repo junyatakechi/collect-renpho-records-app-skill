@@ -1,9 +1,9 @@
-# renpho-collection-app
+# renpho-collection-app-skill
 
 RENPHO（体組成計）の測定を取得し、Notionの「体重記録」DBへ記録する、アプリケーションスキル。
 体重・体脂肪率・骨格筋量・基礎代謝など17項目を、まだ入っていない分だけ記録する。
 
-RENPHO側の判断（スマホアプリを落とさないセッションの扱い・単位・同じ測定の重複など）は [renpho-api-generic-logic](https://github.com/junyatakechi/renpho-api-generic-logic) に、Notionの呼び方は [notion-cli-generic-logic](https://github.com/junyatakechi/notion-cli-generic-logic) に委ね、どちらの道具も部品として呼ぶ。このスキルが持つのは、記録先のDB・列名と手順。まだ切り出していない判断は `references/` に置く。
+RENPHO側の判断（スマホアプリを落とさないセッションの扱い・単位・同じ測定の重複など）は [renpho-api-generic-logic-skill](https://github.com/junyatakechi/renpho-api-generic-logic-skill) に、Notionの呼び方は [notion-cli-generic-logic-skill](https://github.com/junyatakechi/notion-cli-generic-logic-skill) に委ね、どちらの道具も部品として呼ぶ。このスキルが持つのは、記録先のDB・列名と手順。まだ切り出していない判断は `references/` に置く。
 
 ## 中身
 
@@ -15,29 +15,29 @@ RENPHO側の判断（スマホアプリを落とさないセッションの扱�
 ## 必要なもの
 
 - [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) と [uv](https://docs.astral.sh/uv/)
-- [renpho-api-generic-logic](https://github.com/junyatakechi/renpho-api-generic-logic)（RENPHOの判断と道具）
-- [notion-cli-generic-logic](https://github.com/junyatakechi/notion-cli-generic-logic)（Notionの判断と道具）
+- [renpho-api-generic-logic-skill](https://github.com/junyatakechi/renpho-api-generic-logic-skill)（RENPHOの判断と道具）
+- [notion-cli-generic-logic-skill](https://github.com/junyatakechi/notion-cli-generic-logic-skill)（Notionの判断と道具）
 - 3つのスキルは、同じ `skills/` フォルダに並べて置く（スクリプトが隣のフォルダから道具を読む）
 - 測定を記録するNotionのDB（列は [conventions/notion-db.md](conventions/notion-db.md)）
 
 ## インストール
 
 ```bash
-git clone https://github.com/junyatakechi/renpho-api-generic-logic.git ~/.claude/skills/renpho-api-generic-logic
+git clone https://github.com/junyatakechi/renpho-api-generic-logic-skill.git ~/.claude/skills/renpho-api-generic-logic-skill
 ```
 
 ```bash
-git clone https://github.com/junyatakechi/notion-cli-generic-logic.git ~/.claude/skills/notion-cli-generic-logic
+git clone https://github.com/junyatakechi/notion-cli-generic-logic-skill.git ~/.claude/skills/notion-cli-generic-logic-skill
 ```
 
 ```bash
-git clone https://github.com/junyatakechi/renpho-collection-app.git ~/.claude/skills/renpho-collection-app
+git clone https://github.com/junyatakechi/renpho-collection-app-skill.git ~/.claude/skills/renpho-collection-app-skill
 ```
 
 ## セットアップ
 
-1. renpho-api-generic-logic の README の「セットアップ」で、RENPHOの認証情報を用意する。**パスワードは自分でファイルに書き込み、Claudeに渡さない。**
-2. notion-cli-generic-logic の README の「セットアップ」で、Notionのトークンを用意し、記録先のDBにIntegrationを接続する。
+1. renpho-api-generic-logic-skill の README の「セットアップ」で、RENPHOの認証情報を用意する。**パスワードは自分でファイルに書き込み、Claudeに渡さない。**
+2. notion-cli-generic-logic-skill の README の「セットアップ」で、Notionのトークンを用意し、記録先のDBにIntegrationを接続する。
 3. `.env.example` のキーを、プロジェクトのフォルダ直下（Claude Code を起動するフォルダ）の `.env` に足し、値を埋める。`.env` はプロジェクトのスキルで共有する。
 
 | キー | 中身 |
@@ -48,7 +48,7 @@ git clone https://github.com/junyatakechi/renpho-collection-app.git ~/.claude/sk
 
    ```bash
    cd <プロジェクトのフォルダ>   # .env のあるフォルダ
-   uv run ~/.claude/skills/renpho-collection-app/scripts/sync_renpho_to_notion.py --dry-run
+   uv run ~/.claude/skills/renpho-collection-app-skill/scripts/sync_renpho_to_notion.py --dry-run
    ```
 
 RENPHOは1つのアカウントに1つのセッションしか持てないため、初めてログインしたときにスマホアプリがログアウトされる。以降は保存したtokenを使い回すので、ログアウトは起きない。

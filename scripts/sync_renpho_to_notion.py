@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["pycryptodome>=3.15"]
 # ///
-"""renpho-collection-app: RENPHO → Notion「体重記録」DBの同期。
+"""renpho-collection-app-skill: RENPHO → Notion「体重記録」DBの同期。
 
 使い方:
   uv run scripts/sync_renpho_to_notion.py --dry-run          # 書き込まず件数と内訳だけ表示
@@ -13,8 +13,8 @@
   uv run scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 他のスキルから頼まれたとき
 
 **判断はこのスキルに持たない。** RENPHO側の事情(セッション・測定時刻・単位・同一測定の集約・
-欠測・IDの型)は renpho-api-generic-logic の判断と道具に、Notionの呼び方は
-notion-cli-generic-logic の判断と道具に従う。どちらの道具も写さず、importして呼ぶ。
+欠測・IDの型)は renpho-api-generic-logic-skill の判断と道具に、Notionの呼び方は
+notion-cli-generic-logic-skill の判断と道具に従う。どちらの道具も写さず、importして呼ぶ。
 このスキルが持つのは、導入先の環境(記録先のDB・列名)と手順だけ。
 
 冪等性は「RENPHO ID」列で担保する。既にそのIDのページがあればスキップするので、
@@ -26,8 +26,8 @@ import sys
 from datetime import datetime, timedelta
 
 _SKILLS = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-sys.path.insert(0, os.path.join(_SKILLS, "renpho-api-generic-logic", "scripts"))
-sys.path.insert(0, os.path.join(_SKILLS, "notion-cli-generic-logic", "scripts"))
+sys.path.insert(0, os.path.join(_SKILLS, "renpho-api-generic-logic-skill", "scripts"))
+sys.path.insert(0, os.path.join(_SKILLS, "notion-cli-generic-logic-skill", "scripts"))
 import renpho_records  # noqa: E402
 from renpho_api import RenphoError  # noqa: E402
 from renpho_env import open_client  # noqa: E402
@@ -44,8 +44,8 @@ ENV_DB_KEY = "RENPHO_COLLECTION_DB_URL"
 
 # ---------------------------------------------------------------- 記録先の列(導入先の環境)
 # 記録先の「体重記録」DBの列名。conventions/notion-db.md が説明で、ここが正。
-# 列を足す前に renpho-api-generic-logic の項目の意味と単位の判断に聞き、
-# 列名を変えたらNotion側と同時にここを直す(notion-cli-generic-logic のスキーマの変更の判断)。
+# 列を足す前に renpho-api-generic-logic-skill の項目の意味と単位の判断に聞き、
+# 列名を変えたらNotion側と同時にここを直す(notion-cli-generic-logic-skill のスキーマの変更の判断)。
 TITLE_COLUMN = "Name"          # 測定日の YYYY-MM-DD
 DATE_COLUMN = "対象日時"       # 測定時刻(JST)
 ID_COLUMN = "RENPHO ID"        # 一意キー。必ずテキスト
@@ -172,7 +172,7 @@ def main():
 
     # RENPHOはアカウントに1セッションしか持てず、ログインするたびにアプリ側が
     # ログアウトされる。記録先が十分新しいなら、そもそも接続しないのが一番効く
-    # (renpho-api-generic-logic のセッションとトークンの判断)。
+    # (renpho-api-generic-logic-skill のセッションとトークンの判断)。
     if args.max_age_hours is not None:
         age = notion_data_age_hours(ds_id)
         if age is not None and age <= args.max_age_hours:

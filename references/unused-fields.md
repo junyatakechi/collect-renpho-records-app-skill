@@ -20,4 +20,4 @@
 
 ## 当てはまる範囲と限界
 
-- Elis Aspire で確かめたこと。機種を変えたら、renpho-api-generic-logic の項目の意味と単位の判断で確かめ直す。
+- Elis Aspire で確かめたこと。機種を変えたら、renpho-api-generic-logic-skill の項目の意味と単位の判断で確かめ直す。

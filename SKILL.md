@@ -1,9 +1,9 @@
 ---
-name: renpho-collection-app
+name: renpho-collection-app-skill
 description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  version: "0.2.1"
-  repository: "https://github.com/junyatakechi/renpho-collection-app"
+  version: "0.3.0"
+  repository: "https://github.com/junyatakechi/renpho-collection-app-skill"
 ---
 
 # RENPHOの測定の記録
@@ -13,7 +13,7 @@ metadata:
 **切り出した判断は、このスキルに書かない。下の判断の委任表の判断先の、外部のロジックスキルに委ねる。**
 ここにあるのは、測定をNotionに記録するために、どの判断を外部に委ね、何を実行するかだけ。
 まだ切り出していない判断は、このスキルの `references/` に判断ファイルの形で置き、判断の委任表から指す。
-RENPHOの癖（ログインでアプリが落ちる・単位が返らない・同じ測定が重複する）は、どれも renpho-api-generic-logic の判断と道具が持つ。ここで写したり、言い換えて書き直したりしない。
+RENPHOの癖（ログインでアプリが落ちる・単位が返らない・同じ測定が重複する）は、どれも renpho-api-generic-logic-skill の判断と道具が持つ。ここで写したり、言い換えて書き直したりしない。
 
 もう1つは、**ロジックスキルに無い判断を一般論で埋めない**こと。
 判断が無いときは「判断が無い」と書き、本人に聞く。とくに、RENPHOの応答を見て「この項目はたぶん○○」と推測で列を足さない。
@@ -38,18 +38,18 @@ RENPHOの癖（ログインでアプリが落ちる・単位が返らない・�
 
 | 聞きたい事 | 判断先 | 欲しい答えの形 |
 |---|---|---|
-| RENPHOに、いつ・どう接続すれば、スマホアプリを落とさずに済むか | `renpho-api-generic-logic/references/session.md` | 接続を省く条件と、クライアントの作り方（道具の使い方） |
-| RENPHOの道具を、どの入口から呼ぶか | `renpho-api-generic-logic/references/client-usage.md` | 呼ぶ関数の順と、呼び出し側で書かないこと（道具の使い方） |
-| 認証情報が無い・ログインに失敗したとき、どうするか | `renpho-api-generic-logic/references/credentials.md` | 利用者に案内すること・Claudeがしてはいけないこと |
-| 測定の日付と時刻を、どの項目から取るか | `renpho-api-generic-logic/references/measured-time.md` | 使う項目と、それを返す道具の関数（道具の使い方） |
-| 1回の測定で残る複数のレコードを、どう記録するか | `renpho-api-generic-logic/references/session-collapse.md` | 畳み方と窓の幅、それを済ませる道具の関数（道具の使い方） |
-| 体組成が測れなかった測定を、どう記録するか | `renpho-api-generic-logic/references/missing-composition.md` | 記録する項目と空にする項目、それを済ませる道具の関数（道具の使い方） |
-| 重複を防ぐ一意キーを、何で、どの型で持つか | `renpho-api-generic-logic/references/record-id.md` | キーと列の型、差分の取り方 |
-| 列を足すとき、どのキーが何で、どの項目に列を作るか | `renpho-api-generic-logic/references/field-units.md` | キー・意味・単位の表と、確かめ方（道具の使い方） |
-| RENPHOのAPIが失敗したとき、どこを見るか | `renpho-api-generic-logic/references/unofficial-api.md` | 認証の失敗かプロトコルの破損かと、次にすること |
-| Notionを読み書きするとき、道具をどう呼ぶか | `notion-cli-generic-logic/references/client-usage.md` | どの入口から呼ぶかと、呼び出し側で書かないこと（道具の使い方） |
-| 記録先のDBの列を足す・変えるとき、どう進めるか | `notion-cli-generic-logic/references/schema-change.md` | 進め方と、守ること（道具の使い方） |
-| 記録したあと、何を確かめ、崩れていたらどう直すか | `notion-cli-generic-logic/references/write-verification.md` | 確かめることと直し方（道具の使い方） |
+| RENPHOに、いつ・どう接続すれば、スマホアプリを落とさずに済むか | `renpho-api-generic-logic-skill/references/session.md` | 接続を省く条件と、クライアントの作り方（道具の使い方） |
+| RENPHOの道具を、どの入口から呼ぶか | `renpho-api-generic-logic-skill/references/client-usage.md` | 呼ぶ関数の順と、呼び出し側で書かないこと（道具の使い方） |
+| 認証情報が無い・ログインに失敗したとき、どうするか | `renpho-api-generic-logic-skill/references/credentials.md` | 利用者に案内すること・Claudeがしてはいけないこと |
+| 測定の日付と時刻を、どの項目から取るか | `renpho-api-generic-logic-skill/references/measured-time.md` | 使う項目と、それを返す道具の関数（道具の使い方） |
+| 1回の測定で残る複数のレコードを、どう記録するか | `renpho-api-generic-logic-skill/references/session-collapse.md` | 畳み方と窓の幅、それを済ませる道具の関数（道具の使い方） |
+| 体組成が測れなかった測定を、どう記録するか | `renpho-api-generic-logic-skill/references/missing-composition.md` | 記録する項目と空にする項目、それを済ませる道具の関数（道具の使い方） |
+| 重複を防ぐ一意キーを、何で、どの型で持つか | `renpho-api-generic-logic-skill/references/record-id.md` | キーと列の型、差分の取り方 |
+| 列を足すとき、どのキーが何で、どの項目に列を作るか | `renpho-api-generic-logic-skill/references/field-units.md` | キー・意味・単位の表と、確かめ方（道具の使い方） |
+| RENPHOのAPIが失敗したとき、どこを見るか | `renpho-api-generic-logic-skill/references/unofficial-api.md` | 認証の失敗かプロトコルの破損かと、次にすること |
+| Notionを読み書きするとき、道具をどう呼ぶか | `notion-cli-generic-logic-skill/references/client-usage.md` | どの入口から呼ぶかと、呼び出し側で書かないこと（道具の使い方） |
+| 記録先のDBの列を足す・変えるとき、どう進めるか | `notion-cli-generic-logic-skill/references/schema-change.md` | 進め方と、守ること（道具の使い方） |
+| 記録したあと、何を確かめ、崩れていたらどう直すか | `notion-cli-generic-logic-skill/references/write-verification.md` | 確かめることと直し方（道具の使い方） |
 
 - 同期のたびに聞くのは無い。セッション・入口・認証情報と測定の記録の判断は、`scripts/sync_renpho_to_notion.py` を書いたときに聞き、返ってきた道具の使い方どおりに呼んでいる。スクリプトを直すとき・判断先の版が上がったときに聞き直す。
 - 列の判断は、列を足す・変えるときだけ聞く。APIの失敗の判断は、同期が失敗したときだけ聞く。
@@ -60,11 +60,11 @@ RENPHOの癖（ログインでアプリが落ちる・単位が返らない・�
 
 | 聞きたい事 | 判断先 | 欲しい答えの形 |
 |---|---|---|
-| 誰に頼まれたかで、RENPHOへの接続を省くかをどう変えるか | `renpho-collection-app/references/request-source.md` | `--max-age-hours` を付けるかと、渡す時間 |
-| 初めての同期・列を変えた直後に、何で確かめるか | `renpho-collection-app/references/first-sync-check.md` | 先に流すオプション |
-| 記録先に数日分の体重が無いとき、同期漏れとして扱うか | `renpho-collection-app/references/missing-days.md` | 扱う / 扱わない |
-| 記録先のDBを、新しく作るか | `renpho-collection-app/references/keep-existing-db.md` | 作る / 作らない と、その理由 |
-| 常に空の項目・重複する項目に、列を作るか | `renpho-collection-app/references/unused-fields.md` | 列を作らない項目 |
+| 誰に頼まれたかで、RENPHOへの接続を省くかをどう変えるか | `renpho-collection-app-skill/references/request-source.md` | `--max-age-hours` を付けるかと、渡す時間 |
+| 初めての同期・列を変えた直後に、何で確かめるか | `renpho-collection-app-skill/references/first-sync-check.md` | 先に流すオプション |
+| 記録先に数日分の体重が無いとき、同期漏れとして扱うか | `renpho-collection-app-skill/references/missing-days.md` | 扱う / 扱わない |
+| 記録先のDBを、新しく作るか | `renpho-collection-app-skill/references/keep-existing-db.md` | 作る / 作らない と、その理由 |
+| 常に空の項目・重複する項目に、列を作るか | `renpho-collection-app-skill/references/unused-fields.md` | 列を作らない項目 |
 
 - このスキルの判断ファイルは、このスキルが自分で読んで当てはめる。
 - 齟齬が見つかったら、ここが切り出す候補になる。切り出すときは、判断ファイルをロジックスキルへ移し、行を上の表へ移して判断先を書き換える。
@@ -75,8 +75,8 @@ RENPHOの癖（ログインでアプリが落ちる・単位が返らない・�
 
 | スキル名 | リポジトリのURL | 版 |
 |---|---|---|
-| `renpho-api-generic-logic` | https://github.com/junyatakechi/renpho-api-generic-logic | 0.1.x |
-| `notion-cli-generic-logic` | https://github.com/junyatakechi/notion-cli-generic-logic | 0.2.x |
+| `renpho-api-generic-logic-skill` | https://github.com/junyatakechi/renpho-api-generic-logic-skill | 0.2.x |
+| `notion-cli-generic-logic-skill` | https://github.com/junyatakechi/notion-cli-generic-logic-skill | 0.3.x |
 
 - 版は、そのスキルの版（`metadata.version`）の先頭2桁に、`.x` を付けた形（例：`0.2.x`）。3桁目はどの版でもよいことを表す。3桁目だけが上がった版は、この表を直さずにそのまま使う。3桁目は、呼び出し側が何も合わせなくてよい変更だけで上がるため。
 - 判断先を別の人のスキルに差し替えるときは、この表の行も差し替える。
@@ -94,7 +94,7 @@ RENPHOの癖（ログインでアプリが落ちる・単位が返らない・�
 | 合図 | 足りないもの |
 |---|---|
 | `環境変数にも <起動フォルダ>/.env にも RENPHO_COLLECTION_DB_URL が無い` | 記録先のDBのURL |
-| `RENPHO_EMAIL / RENPHO_PASSWORD が設定されていません。`・`RENPHOへのログインに失敗しました` | RENPHOの認証情報（renpho-api-generic-logic の認証情報の扱いの判断に聞く） |
+| `RENPHO_EMAIL / RENPHO_PASSWORD が設定されていません。`・`RENPHOへのログインに失敗しました` | RENPHOの認証情報（renpho-api-generic-logic-skill の認証情報の扱いの判断に聞く） |
 | `NOTION_TOKEN is not set`・記録先のDBで404 | Notionのトークン、または記録先のDBへのIntegrationの接続 |
 
 ### 2. 同期する
