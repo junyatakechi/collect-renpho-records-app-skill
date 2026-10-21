@@ -7,7 +7,7 @@ RENPHO側の判断（スマホアプリを落とさないセッションの扱�
 
 ## 中身
 
-- [SKILL.md](SKILL.md): 判断の委任表・使用するリポジトリ表と、設定の確認・同期・報告の手順
+- [SKILL.md](SKILL.md): 判断の委任表と、設定の確認・同期・報告の手順
 - [conventions/notion-db.md](conventions/notion-db.md): 記録先のDBと列（この環境での記録の取り決め）
 - [references/](references/): まだ切り出していない判断。1判断1ファイル
 - [scripts/sync_renpho_to_notion.py](scripts/sync_renpho_to_notion.py): RENPHOから取り、Notionへ記録する
