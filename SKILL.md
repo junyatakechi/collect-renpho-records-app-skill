@@ -2,11 +2,10 @@
 name: renpho-collection-app-skill
 description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  version: "0.3.2"
+  version: "0.3.3"
   repository: "https://github.com/junyatakechi/renpho-collection-app-skill"
-  design: "人の判断を切り出すAIスキルの設計_v1.0.0"
+  design: "人の判断を切り出すAIスキルの設計_v2.0.0"
   design-url: "https://app.notion.com/p/jay-t/AI-3eaf2fd6925e8102b86fee3b6b3dd5a3"
-  design-rule: "このスキルを作る・直すときは、design の設計文書を読み、その型と定型文に従う。"
   dependencies: >-
     github:junyatakechi/renpho-api-generic-logic-skill@^0.2.0,
     github:junyatakechi/notion-cli-generic-logic-skill@^0.3.0
