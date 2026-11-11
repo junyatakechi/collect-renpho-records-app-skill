@@ -2,7 +2,7 @@
 name: renpho-collection-app-skill
 description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  version: "0.3.3"
+  version: "0.3.4"
   repository: "https://github.com/junyatakechi/renpho-collection-app-skill"
   design: "人の判断を切り出すAIスキルの設計_v2.0.0"
   design-url: "https://app.notion.com/p/jay-t/AI-3eaf2fd6925e8102b86fee3b6b3dd5a3"
@@ -58,7 +58,6 @@ uv run <skill-dir>/scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 
 ## 3. 伝える
 
 1. チャットへは、作成した件数・スキップした件数・体組成なしの件数を返す。依頼元のスキルから頼まれたときは、依頼元が欲しい結果を満たしたか確かめられるように、同じ内容を返す。
-   - 出力に `※ RENPHOにログインしました` があれば、必ず伝える。スマホアプリがログアウトされたので、アプリで再ログインしてもらう。
    - `--max-age-hours` で接続しなかったときは、その旨と、記録先の最新の測定が何時間前かを伝える。
    - 記録先に数日分の体重が無ければ、`J3`に聞く。
    - 参照したロジックスキルの名前と、実際に使った版（判断先の `metadata.version`）を添えられるようにしておく。どの判断で記録したかを後から辿るため。
