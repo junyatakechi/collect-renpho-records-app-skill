@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.join(_SKILLS, "renpho-api-generic-logic-skill", "scri
 sys.path.insert(0, os.path.join(_SKILLS, "notion-cli-generic-logic-skill", "scripts"))
 import renpho_records  # noqa: E402
 from renpho_api import RenphoError  # noqa: E402
-from renpho_env import open_client  # noqa: E402
+from renpho_env import open_client, token_issued_at  # noqa: E402
 from notion_client import (  # noqa: E402
     NotionError, create_page, data_source_id_from_url, env_file_path, load_env, query_data_source,
 )
@@ -189,6 +189,9 @@ def main():
     client.ensure_auth()
     records = client.get_measurements()
     log(f"RENPHOから {len(records)}件 取得")
+    # 測っていないのか、アプリから上がっていないのかを見分ける材料(references/missing-days.md)。
+    latest = renpho_records.measured_at(records[0]) if records else None  # 新しい順
+    issued = token_issued_at(client.token)
 
     if args.session_window:
         before = len(records)
@@ -233,6 +236,9 @@ def main():
 
     log("=== 完了 ===")
     log(f"作成 {created}件 / スキップ {skipped}件 / うち体組成なし {no_comp}件")
+    log(f"この同期でログインしたか: {'した' if client.logged_in else 'しない(保存済みtokenで通った)'}")
+    log(f"保存済みtokenの発行: {issued.isoformat(timespec='minutes') if issued else '(読めない)'}")
+    log(f"RENPHOの最新の測定: {latest.isoformat(timespec='minutes') if latest else 'なし'}")
     if args.dry_run:
         log("(dry-run のため実際には書き込んでいません)")
 

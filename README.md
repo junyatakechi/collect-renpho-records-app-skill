@@ -30,7 +30,9 @@ git clone https://github.com/junyatakechi/renpho-collection-app-skill.git ~/.cla
    uv run ~/.claude/skills/renpho-collection-app-skill/scripts/sync_renpho_to_notion.py --dry-run
    ```
 
-RENPHOは1つのアカウントに1つのセッションしか持てないため、初めてログインしたときにスマホアプリがログアウトされる。以降は保存したtokenを使い回すので、ログアウトは起きない。
+RENPHOは1つのアカウントに1つのセッションしか持てないため、初めてログインしたときにスマホアプリがログアウトされる。以降は保存したtokenを使い回す。ただし、アプリでログインし直すとこちらのtokenが無効になり、次の同期で再ログインして、アプリがまたログアウトされる。
+
+アプリがログアウトしている間の測定は、RENPHOに上がらない。同期がログインしたと伝えたら、スマホでアプリを開いてログインし直す。溜まっていた測定がまとめて上がり、次の同期で記録先に入る。
 
 ## 使い方
 
