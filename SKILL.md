@@ -2,10 +2,10 @@
 name: renpho-collection-app-skill
 description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  version: "0.3.5"
+  version: "0.3.6"
   repository: "https://github.com/junyatakechi/renpho-collection-app-skill"
-  design: "人の判断を切り出すAIスキルの設計_v2.0.0"
-  design-url: "https://app.notion.com/p/jay-t/AI-3eaf2fd6925e8102b86fee3b6b3dd5a3"
+  design: "人の判断を切り出すAgent Skillsの設計_v3.6.0"
+  design-url: "https://app.notion.com/p/3eaf2fd6925e8102b86fee3b6b3dd5a3"
   dependencies: >-
     github:junyatakechi/renpho-api-generic-logic-skill@^0.2.0,
     github:junyatakechi/notion-cli-generic-logic-skill@^0.3.0
@@ -18,7 +18,7 @@ RENPHOの測定を、取りこぼしも重複もなく、Notionの体重記録DB
 # 要件
 
 1. まだ記録していない測定だけを記録し、何度実行しても重複させない。
-2. RENPHOへの接続は要るときだけにし、本人のスマホアプリがログアウトされる回数を減らす。
+2. RENPHOへの接続は要るときだけにし、対象者のスマホアプリがログアウトされる回数を減らす。
 3. RENPHOのパスワードをチャットで受け取らない。
 
 # 手順
@@ -59,7 +59,7 @@ uv run <skill-dir>/scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 
 
 1. チャットへは、作成した件数・スキップした件数・体組成なしの件数を返す。依頼元のスキルから頼まれたときは、依頼元が欲しい結果を満たしたか確かめられるように、同じ内容を返す。
    - `--max-age-hours` で接続しなかったときは、その旨と、記録先の最新の測定が何時間前かを伝える。
-   - 記録先に数日分の体重が無ければ、出力の「この同期でログインしたか」「保存済みtokenの発行」「RENPHOの最新の測定」を材料に、`J3`に聞く。同期漏れとして扱うと答えたら、同期済みとして扱わず、利用者にスマホのアプリを開いてログインし直すよう頼む。
+   - 記録先に数日分の体重が無ければ、出力の「この同期でログインしたか」「保存済みtokenの発行」「RENPHOの最新の測定」を材料に、`J3`に聞く。同期漏れとして扱うと答えたら、同期済みとして扱わず、対象者にスマホのアプリを開いてログインし直すよう頼む。
    - この同期でログインしたときは、何を伝えるかは`G1`に従う。
    - 参照したロジックスキルの名前と、実際に使った版（判断先の `metadata.version`）を添えられるようにしておく。どの判断で記録したかを後から辿るため。
 
