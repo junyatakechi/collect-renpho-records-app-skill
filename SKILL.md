@@ -2,7 +2,7 @@
 name: renpho-collection-app-skill
 description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  version: "0.4.0"
+  version: "0.4.1"
   repository: "https://github.com/junyatakechi/renpho-collection-app-skill"
   design: "人の判断を切り出すAgent Skillsの設計_v4.0.0"
   design-url: "https://app.notion.com/p/3eaf2fd6925e8102b86fee3b6b3dd5a3"
@@ -68,11 +68,11 @@ uv run <skill-dir>/scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 
 
 | ID | 聞きたい事 | 判断先 | 欲しい答えの形 |
 |---|---|---|---|
-| J1 | 誰に頼まれたかで、RENPHOへの接続を省くかをどう変えるか | `request-source.md` | `--max-age-hours` を付けるかと、渡す時間 |
-| J2 | 初めての同期・列を変えた直後に、何で確かめるか | `first-sync-check.md` | 先に流すオプション |
-| J3 | 記録先に数日分の体重が無いとき、同期漏れとして扱うか | `missing-days.md` | `扱う`/`扱わない` |
-| J4 | 記録先のDBを、新しく作るか | `keep-existing-db.md` | `作る`/`作らない` と、その理由 |
-| J5 | 常に空の項目・重複する項目に、列を作るか | `unused-fields.md` | 列を作らない項目 |
+| J1 | 誰に頼まれたかで、RENPHOへの接続を省くかをどう変えるか | [request-source.md](references/request-source.md) | `--max-age-hours` を付けるかと、渡す時間 |
+| J2 | 初めての同期・列を変えた直後に、何で確かめるか | [first-sync-check.md](references/first-sync-check.md) | 先に流すオプション |
+| J3 | 記録先に数日分の体重が無いとき、同期漏れとして扱うか | [missing-days.md](references/missing-days.md) | `扱う`/`扱わない` |
+| J4 | 記録先のDBを、新しく作るか | [keep-existing-db.md](references/keep-existing-db.md) | `作る`/`作らない` と、その理由 |
+| J5 | 常に空の項目・重複する項目に、列を作るか | [unused-fields.md](references/unused-fields.md) | 列を作らない項目 |
 
 # 一般的な業務知識の参照表
 
@@ -89,7 +89,7 @@ uv run <skill-dir>/scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 
 
 | ID | 取り決め | 種類 | ファイル |
 |---|---|---|---|
-| C1 | 記録先のDBと列・記録の限界 | 環境の取り決め | `conventions/notion-db.md` |
+| C1 | 記録先のDBと列・記録の限界 | 環境の取り決め | [conventions/notion-db.md](conventions/notion-db.md) |
 
 # このスキルの設計上の決まりごと
 
