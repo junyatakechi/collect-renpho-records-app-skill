@@ -2,9 +2,9 @@
 name: renpho-collection-app-skill
 description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  version: "0.4.2"
-  repository: "https://github.com/junyatakechi/renpho-collection-app-skill"
-  design: "人の判断を切り出すAgent Skillsの設計_v5.0.0"
+  skill-version: "0.4.3"
+  design-name: "人の判断を切り出すAgent Skillsの設計"
+  design-version: "6.0.1"
   design-url: "https://app.notion.com/p/3eaf2fd6925e8102b86fee3b6b3dd5a3"
   dependencies: >-
     github:junyatakechi/renpho-api-generic-logic-skill@^0.2.0,
@@ -58,7 +58,7 @@ uv run <skill-dir>/scripts/sync_renpho_to_notion.py --max-age-hours <時間>  # 
    - `--max-age-hours` で接続しなかったときは、その旨と、記録先の最新の測定が何時間前かを伝える。
    - 記録先に数日分の体重が無ければ、出力の「この同期でログインしたか」「保存済みtokenの発行」「RENPHOの最新の測定」を材料に、`J3`に聞く。答えと、そのときに頼むことを、チャットに書く。
    - この同期でログインしたときは、何を伝えるかは`G1`に従う。
-   - 参照したロジックスキルの名前と、実際に使った版（判断先の `metadata.version`）を添えられるようにしておく。
+   - 参照したロジックスキルの名前と、実際に使った版（判断先の `metadata.skill-version`）を添えられるようにしておく。
 
 # 中核判断の委任表
 
