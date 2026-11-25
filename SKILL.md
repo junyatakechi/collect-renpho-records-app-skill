@@ -1,10 +1,10 @@
 ---
-name: renpho-collection-app-skill
+name: collect-renpho-records-app-skill
 description: "文脈: RENPHOの記録。種類: アプリケーションスキル。使う場面: 名前で指名されたときだけ使い、会話の内容からは選ばない。"
 metadata:
-  skill-version: "0.4.3"
+  skill-version: "0.5.0"
   design-name: "人の判断を切り出すAgent Skillsの設計"
-  design-version: "6.0.1"
+  design-version: "7.0.0"
   design-url: "https://app.notion.com/p/3eaf2fd6925e8102b86fee3b6b3dd5a3"
   dependencies: >-
     github:junyatakechi/renpho-api-generic-logic-skill@^0.2.0,

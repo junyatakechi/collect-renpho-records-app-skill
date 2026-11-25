@@ -1,4 +1,4 @@
-# renpho-collection-app-skill
+# collect-renpho-records-app-skill
 
 RENPHO（体組成計）の測定を取得し、Notionの「体重記録」DBへ、まだ入っていない分だけ記録するアプリケーションスキル。
 
@@ -12,7 +12,7 @@ RENPHO（体組成計）の測定を取得し、Notionの「体重記録」DBへ
 ## インストール
 
 ```bash
-git clone https://github.com/junyatakechi/renpho-collection-app-skill.git ~/.claude/skills/renpho-collection-app-skill
+git clone https://github.com/junyatakechi/collect-renpho-records-app-skill.git ~/.claude/skills/collect-renpho-records-app-skill
 ```
 
 特定のプロジェクトだけで使うなら、`<プロジェクト>/.claude/skills/` の中でクローンする。
@@ -27,7 +27,7 @@ git clone https://github.com/junyatakechi/renpho-collection-app-skill.git ~/.cla
 
    ```bash
    cd <プロジェクトのフォルダ>   # .env のあるフォルダ
-   uv run ~/.claude/skills/renpho-collection-app-skill/scripts/sync_renpho_to_notion.py --dry-run
+   uv run ~/.claude/skills/collect-renpho-records-app-skill/scripts/sync_renpho_to_notion.py --dry-run
    ```
 
 RENPHOは1つのアカウントに1つのセッションしか持てないため、初めてログインしたときにスマホアプリがログアウトされる。以降は保存したtokenを使い回す。ただし、アプリでログインし直すとこちらのtokenが無効になり、次の同期で再ログインして、アプリがまたログアウトされる。
@@ -39,5 +39,5 @@ RENPHOは1つのアカウントに1つのセッションしか持てないため
 スキル名だけを指定して呼ぶ。指名しないと、このスキルは読み込まれない。
 
 ```
-/renpho-collection-app-skill
+/collect-renpho-records-app-skill
 ```

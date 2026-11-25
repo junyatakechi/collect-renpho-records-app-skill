@@ -28,7 +28,7 @@
 
 ## 未決
 
-- U1：diet-process-evaluation-app-skill の体重の記録が無い期間の判断（`missing-weight.md`）と、同じ答え。切り出すときに1つにまとめるかは決めていない。暫定の扱い：両方に置いたまま、答えをそろえる。
+- U1：evaluate-diet-app-skill の体重の記録が無い期間の判断（`missing-weight.md`）と、同じ答え。切り出すときに1つにまとめるかは決めていない。暫定の扱い：両方に置いたまま、答えをそろえる。
 
 ## 求める材料
 

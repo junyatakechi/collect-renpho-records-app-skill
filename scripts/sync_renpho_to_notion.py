@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["pycryptodome>=3.15"]
 # ///
-"""renpho-collection-app-skill: RENPHO → Notion「体重記録」DBの同期。
+"""collect-renpho-records-app-skill: RENPHO → Notion「体重記録」DBの同期。
 
 使い方:
   uv run scripts/sync_renpho_to_notion.py --dry-run          # 書き込まず件数と内訳だけ表示
